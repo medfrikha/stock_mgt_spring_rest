@@ -2,9 +2,11 @@ package com.ingcode.stock_management_spring.services;
 
 import com.ingcode.stock_management_spring.entities.Provider;
 import com.ingcode.stock_management_spring.repositories.ProviderRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProviderServiceimp implements  ProviderService {
     private ProviderRepository providerRepository;
 
