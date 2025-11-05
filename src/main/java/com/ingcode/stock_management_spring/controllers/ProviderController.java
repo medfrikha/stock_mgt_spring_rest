@@ -2,6 +2,7 @@ package com.ingcode.stock_management_spring.controllers;
 
 import com.ingcode.stock_management_spring.entities.Provider;
 import com.ingcode.stock_management_spring.services.ProviderService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,15 @@ public class ProviderController {
     @GetMapping("/{id}")
     Provider getProvider(@PathVariable long id){
         return providerService.getProvider(id);
+    }
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteProvider(@PathVariable long id){
+        return providerService.deleteProvider(id);
+    }
+    @PutMapping("/{id}")
+    Provider updateProvider(@PathVariable long id, @RequestBody Provider provider){
+        return providerService.updateProvider(id, provider);
+
     }
 
 }
