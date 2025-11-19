@@ -2,7 +2,9 @@ package com.ingcode.stock_management_spring.controllers;
 
 import com.ingcode.stock_management_spring.entities.Article;
 import com.ingcode.stock_management_spring.services.ArticleService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.Path;
@@ -15,6 +17,11 @@ public class ArticleController {
 
     public ArticleController(ArticleService articleService) {
         this.articleService = articleService;
+    }
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String adminEndpoint() {
+        return "Accessible only to admins";
     }
 
     @GetMapping("/")
