@@ -6,6 +6,7 @@ import com.ingcode.stock_management_spring.dto.SignUpRequest;
 import com.ingcode.stock_management_spring.dto.SignUpResponse;
 import com.ingcode.stock_management_spring.services.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,8 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public LogInResponse login(@RequestBody LogInRequest request) {
-        return authService.login(request);
+    public ResponseEntity<?> login(@RequestBody LogInRequest request) {
+        return ResponseEntity.ok( authService.login(request));
     }
 
     @PostMapping("/register")
